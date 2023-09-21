@@ -1,0 +1,49 @@
+﻿@model EventManagementWeb.ViewModels.VenueModel
+
+@{
+    ViewBag.Title = "VenueList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>VenueList</h2>
+
+<p>
+    @Html.ActionLink("Add Venue", "CreateVenue")
+</p>
+<table class="table">
+    <tr>
+        <th>Sr No</th>
+        <th>Venue Name</th>
+        <th>Venue Cost</th>
+        <th>Action</th>
+    </tr>
+
+
+    @if (Model.VenueList.Count > 0)
+    {
+        var x = 1;
+        for (int i = 0; i < Model.VenueList.Count; i++)
+        {
+            <tr>
+                <td>
+                    @x
+                </td>
+                <td>
+                    @Model.VenueList[i].VenueName
+                    @Html.HiddenFor(m => Model.VenueList[i].VenueName, new { @class = "hdnVenueName" })
+                </td>
+                <td>
+                    @Model.VenueList[i].VenueCost
+                    @Html.HiddenFor(m => Model.VenueList[i].VenueCost, new { @class = "hdnVenueCost" })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+            x = x + 1;
+        }
+    }
+
+</table>

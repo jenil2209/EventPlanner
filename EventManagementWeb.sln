@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManagementWeb", "EventManagementWeb\EventManagementWeb.csproj", "{54DB3F32-2B83-4754-BD39-5219131724FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventPlannerData", "EventPlannerData\EventPlannerData.csproj", "{58A7DB57-FB14-4382-BCC8-E66DDB69609D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54DB3F32-2B83-4754-BD39-5219131724FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54DB3F32-2B83-4754-BD39-5219131724FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54DB3F32-2B83-4754-BD39-5219131724FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54DB3F32-2B83-4754-BD39-5219131724FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A7DB57-FB14-4382-BCC8-E66DDB69609D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A7DB57-FB14-4382-BCC8-E66DDB69609D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A7DB57-FB14-4382-BCC8-E66DDB69609D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A7DB57-FB14-4382-BCC8-E66DDB69609D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {245DB8DA-0631-4CC6-807E-29A983379ABE}
+	EndGlobalSection
+EndGlobal
