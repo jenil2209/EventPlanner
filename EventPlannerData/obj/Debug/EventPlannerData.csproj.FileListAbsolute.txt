@@ -10,3 +10,15 @@ E:\Projects\DotNetProjects\Pruthvi\EventManagementWeb\EventPlannerData\obj\Debug
 E:\Projects\DotNetProjects\Pruthvi\EventManagementWeb\EventPlannerData\obj\Debug\EventPlannerData.csproj.CopyComplete
 E:\Projects\DotNetProjects\Pruthvi\EventManagementWeb\EventPlannerData\obj\Debug\EventPlannerData.dll
 E:\Projects\DotNetProjects\Pruthvi\EventManagementWeb\EventPlannerData\obj\Debug\EventPlannerData.pdb
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EventPlannerData.dll.config
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EventPlannerData.dll
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EventPlannerData.pdb
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.dll
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.xml
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.csproj.AssemblyReference.cache
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.csproj.CoreCompileInputs.cache
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.csproj.CopyComplete
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.dll
+C:\Users\admin\Source\Repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.pdb
