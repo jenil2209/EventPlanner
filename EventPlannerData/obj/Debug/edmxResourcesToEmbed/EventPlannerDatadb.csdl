@@ -48,26 +48,6 @@
     <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
-  <EntityType Name="tbRegistration">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="CityID" Type="Int32" />
-    <Property Name="StateID" Type="Int32" />
-    <Property Name="CountryID" Type="Int32" />
-    <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="BirthDate" Type="DateTime" Precision="3" />
-    <Property Name="RoleID" Type="Int32" />
-    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-  </EntityType>
   <EntityType Name="tbRole">
     <Key>
       <PropertyRef Name="RoleID" />
@@ -101,9 +81,33 @@
     <EntitySet Name="tbCities" EntityType="Self.tbCity" />
     <EntitySet Name="tbCountries" EntityType="Self.tbCountry" />
     <EntitySet Name="tbEventTypes" EntityType="Self.tbEventType" />
-    <EntitySet Name="tbRegistrations" EntityType="Self.tbRegistration" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRole" />
     <EntitySet Name="tbStates" EntityType="Self.tbState" />
     <EntitySet Name="tbVenues" EntityType="Self.tbVenue" />
+    <EntitySet Name="tbFoods" EntityType="dbEventPlannerModel.tbFood" />
+    <EntitySet Name="Users" EntityType="dbEventPlannerModel.User" />
   </EntityContainer>
+  <EntityType Name="tbFood">
+    <Key>
+      <PropertyRef Name="FoodID" />
+    </Key>
+    <Property Name="FoodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MealType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DishType" Type="Int32" />
+    <Property Name="FoodName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FoodFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Createdby" Type="Int32" />
+    <Property Name="Createdate" Type="DateTime" Precision="3" />
+    <Property Name="FoodCost" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

@@ -1,28 +1,54 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@*<style type="text/css">
+        video {
+            object-fit: cover;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            position: inherit;
+            z-index: 1;
+        }
+    </style>
 
-<div class="jumbotron" style="background-color: coral;">
-    <h1>Your Planner</h1>
-    <p class="lead">Spread your thoughts and we will plan events for you</p>
+    <div class="home">
+        <video autoplay muted loop>
+            <source src="~/Content/media/istockphoto-1445028524-640_adpp_is.mp4" type="video/mp4" />
+        </video>
+    </div>*@
+
+<!-- Jumbotron -->
+<div class="p-5 text-center bg-image rounded-3" style="
+        background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+        height: 400px;
+      ">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white">
+
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Jumbotron -->
 
 <div class="row">
     <div class="col-md-4">
         <h2>Birthday Celebration</h2>
         <p>
-            You can pick viral themes that everyone will love, such as Cowgirl/Cowboy, Jungle, Glitz & Glam, Disco, or Rockstar, or build one that is about you and your hobbies. Maybe you’re into crafting or love Marvel or Game of Thrones? Use it to your advantage and come up with something that will remind everyone that it’s your birthday.
+            Whether you're planning a small intimate gathering at home, or a grand blow-out at a fancy location, birthday parties(Opens Overlay) require some thoughtful planning. You'll want to make the guest or guests of honor feel special through all the details, big and small.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-info" href="https://www.chase.com/personal/credit-cards/education/basics/how-to-plan-a-birthday-party">Check it now </a></p>
     </div>
     <div class="col-md-4">
         <h2>Marriage Anniversary</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <p>Whether you’re planning a ten-year anniversary party for your friends or planning a diamond wedding anniversary party for your parents, throwing an anniversary party is a great way to honor a couple’s time spent together.</p>
+        <p><a class="btn btn-info" href="https://www.shutterfly.com/ideas/how-to-plan-an-anniversary-party/">Check it now </a></p>
     </div>
     <div class="col-md-4">
         <h2>Parties</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <p>Whether you own a party planning business or you’re just throwing an event for family and friends, this party planning checklist will help you get organized before the big day!</p>
+        <p><a class="btn btn-info" href="https://www.socialtables.com/blog/event-planning/party-planning-checklist/#items">Check it now </a></p>
     </div>
 </div>

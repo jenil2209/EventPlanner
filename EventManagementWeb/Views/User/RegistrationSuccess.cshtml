@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Registration Successful";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <!-- Include Toastr CSS and JS (as mentioned above) -->
+    <!-- ... -->
+</head>
+<body>
+    <!-- Your registration success content here -->
+
+    @if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+    {
+        <script>
+            // Display a Toastr notification with the success message
+            toastr.success('@Html.Raw(ViewBag.SuccessMessage)', 'Congratulations!', {
+                closeButton: true,
+                progressBar: true,
+                timeOut: 5000 // Auto close after 5 seconds
+            });
+        </script>
+    }
+</body>
+</html>

@@ -84,7 +84,7 @@
     <Compile Include="tbEventType.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>
-    <Compile Include="tbRegistration.cs">
+    <Compile Include="tbFood.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>
     <Compile Include="tbRole.cs">
@@ -94,6 +94,9 @@
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>
     <Compile Include="tbVenue.cs">
+      <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>
   </ItemGroup>

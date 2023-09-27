@@ -1,7 +1,15 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\EventManagementWeb",
+    "\\EventManagementWeb\\App_Start",
+    "\\EventManagementWeb\\Views",
+    "\\EventManagementWeb\\Views\\Booking",
+    "\\EventManagementWeb\\Views\\Events",
+    "\\EventManagementWeb\\Views\\Home",
+    "\\EventManagementWeb\\Views\\Venue",
+    "\\EventPlannerData"
   ],
-  "SelectedNode": "\\C:\\Users\\admin\\Source\\Repos\\EventPlanner",
+  "SelectedNode": "\\EventManagementWeb.sln",
   "PreviewInSolutionExplorer": false
 }

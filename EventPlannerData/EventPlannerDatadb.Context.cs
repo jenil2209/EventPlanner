@@ -30,9 +30,10 @@ namespace EventPlannerData
         public virtual DbSet<tbCity> tbCities { get; set; }
         public virtual DbSet<tbCountry> tbCountries { get; set; }
         public virtual DbSet<tbEventType> tbEventTypes { get; set; }
-        public virtual DbSet<tbRegistration> tbRegistrations { get; set; }
         public virtual DbSet<tbRole> tbRoles { get; set; }
         public virtual DbSet<tbState> tbStates { get; set; }
         public virtual DbSet<tbVenue> tbVenues { get; set; }
+        public virtual DbSet<tbFood> tbFoods { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

@@ -1,20 +1,20 @@
 ﻿@model EventManagementWeb.ViewModels.VenueModel
 
 @{
-    ViewBag.Title = "VenueList";
+    ViewBag.Title = "Venue List";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>VenueList</h2>
+<h2>Venue List</h2>
 
 <p>
-    @Html.ActionLink("Add Venue", "CreateVenue")
+    @Html.ActionLink("Add Venue", "CreateVenue", new { @class = "btn-info" })
 </p>
 <table class="table">
     <tr>
         <th>Sr No</th>
         <th>Venue Name</th>
-        <th>Venue Cost</th>
+        <th>Venue Cost($)</th>
         <th>Action</th>
     </tr>
 
