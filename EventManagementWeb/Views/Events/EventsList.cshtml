@@ -1,0 +1,57 @@
+﻿@model EventManagementWeb.ViewModels.EventBookinkgListView
+
+@{
+    ViewBag.Title = "EventsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EventsList</h2>
+
+<p>
+    @Html.ActionLink("Add Event", "CreateEvent", new { @class = "btn-info", EventBookingId = 0 })
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>Sr No</th>
+        <th>Booking No</th>
+        <th>Booking Date</th>
+        <th>Event Type</th>
+        <th>Venue</th>
+        <th>Action</th>
+    </tr>
+
+    @if (Model.EventBookingsLists.Count > 0)
+    {
+        var x = 1;
+        for (int i = 0; i < Model.EventBookingsLists.Count; i++)
+        {
+
+            <tr>
+                <td>
+                    @x
+                </td>
+                <td>
+                    @Model.EventBookingsLists[i].BookingNo
+                    @Html.HiddenFor(m => Model.EventBookingsLists[i].BookingNo, new { @class = "hdnBookingNo" })
+                </td>
+                <td>
+                    @Model.EventBookingsLists[i].BookingDate
+                    @Html.HiddenFor(m => Model.EventBookingsLists[i].BookingDate, new { @class = "hdnBookingDate" })
+                </td>
+                <td>
+                    @Model.EventBookingsLists[i].EventType
+                    @Html.HiddenFor(m => Model.EventBookingsLists[i].EventType, new { @class = "hdnEventType" })
+                </td>
+                <td>
+                    @Model.EventBookingsLists[i].Venue
+                    @Html.HiddenFor(m => Model.EventBookingsLists[i].Venue, new { @class = "hdnVenue" })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "CreateEvent", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
+                    @Html.ActionLink("Delete", "Delete", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
+                </td>
+            </tr>
+            x = x + 1;
+        }
+    }
+</table>

@@ -45,7 +45,16 @@ namespace EventManagementWeb.Controllers
         [HttpPost]
         public ActionResult CreateVenue(tbVenue tbVenue)
         {
-
+            if (tbVenue.VenueID > 0)
+            {
+                var tabledate = (from tb in objEntity.tbVenues where tb.VenueID == tbVenue.VenueID select tb).FirstOrDefault();
+                if (tabledate != null)
+                {
+                    tabledate.VenueCost = tbVenue.VenueCost;
+                    tabledate.VenueName = tbVenue.VenueName;
+                    objEntity.SaveChanges();
+                }
+            }
             if (tbVenue != null)
             {
                 tbVenue.CreatedDate = DateTime.Now;

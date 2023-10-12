@@ -37,14 +37,14 @@ namespace EventManagementWeb.Controllers
                 }
 
                 // Hash the password
-                string hashedPassword = Convert.ToString(HashPassword(model.Password));
+                //string hashedPassword = Convert.ToString(HashPassword(model.Password));
 
                 // Create a new user
                 var user = new User
                 {
                     FullName = model.FullName,
                     Email = model.Email,
-                    PasswordHash = hashedPassword
+                    PasswordHash = model.Password
                     // Set other properties as needed
                 };
 
@@ -161,33 +161,35 @@ namespace EventManagementWeb.Controllers
 
             try
             {
-                // Generate a salt
-                byte[] salt;
-                new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
+                //// Generate a salt
+                //byte[] salt;
+                //new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
 
-                // Create a new Rfc2898DeriveBytes object to perform the hashing
-                var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+                //// Create a new Rfc2898DeriveBytes object to perform the hashing
+                //var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
 
-                // Get the hashed password bytes
-                byte[] hashBytes = pbkdf2.GetBytes(20);
+                //// Get the hashed password bytes
+                //byte[] hashBytes = pbkdf2.GetBytes(20);
 
-                // Combine the salt and hashed password
-                byte[] hashWithSaltBytes = new byte[36];
-                Array.Copy(salt, 0, hashWithSaltBytes, 0, 16);
-                Array.Copy(hashBytes, 0, hashWithSaltBytes, 16, 20);
+                //// Combine the salt and hashed password
+                //byte[] hashWithSaltBytes = new byte[36];
+                //Array.Copy(salt, 0, hashWithSaltBytes, 0, 16);
+                //Array.Copy(hashBytes, 0, hashWithSaltBytes, 16, 20);
 
-                // Convert the byte array to a base64-encoded string
-                string hashedPassword = Convert.ToBase64String(hashWithSaltBytes);
-                var id = db.Users.Where(x => x.Email == Email && x.PasswordHash == hashedPassword).Select(x => x.UserId);
-                if (Convert.ToInt32(id) > 0)
+                //// Convert the byte array to a base64-encoded string
+                //string hashedPassword = Convert.ToBase64String(hashWithSaltBytes);
+                var User = (from tb in db.Users where tb.Email == Email && tb.PasswordHash == password select tb).FirstOrDefault();
+                if (Convert.ToInt32(User.UserId) > 0)
                 {
-                    return RedirectToAction("Index", "Home");
+                    Session["UserID"] = User.UserId.ToString();
+                    Session["UserName"] = User.FullName.ToString();
+                    return RedirectToAction("Index", "Home", new { UserId = User.UserId });
                 }
                 else
                 {
                     return View();
                 }
-                return Content(hashedPassword);
+                //return Content(password);
             }
             catch (Exception ex)
             {

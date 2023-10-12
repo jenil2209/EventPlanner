@@ -62,6 +62,26 @@
     <Property Name="Createdate" Type="datetime" />
     <Property Name="FoodCost" Type="int" />
   </EntityType>
+  <EntityType Name="tbRegistration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="varchar" MaxLength="100" />
+    <Property Name="CityID" Type="int" />
+    <Property Name="StateID" Type="int" />
+    <Property Name="CountryID" Type="int" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="20" />
+    <Property Name="EmailID" Type="varchar" MaxLength="100" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
   <EntityType Name="tbRoles">
     <Key>
       <PropertyRef Name="RoleID" />
@@ -105,6 +125,7 @@
     <EntitySet Name="tbCountry" EntityType="Self.tbCountry" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbEventTypes" EntityType="Self.tbEventTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbFood" EntityType="Self.tbFood" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbRegistration" EntityType="Self.tbRegistration" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbRoles" EntityType="Self.tbRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbState" EntityType="Self.tbState" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbVenue" EntityType="Self.tbVenue" Schema="dbo" store:Type="Tables" />

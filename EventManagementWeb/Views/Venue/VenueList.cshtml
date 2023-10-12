@@ -37,9 +37,8 @@
                     @Html.HiddenFor(m => Model.VenueList[i].VenueCost, new { @class = "hdnVenueCost" })
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Edit", "CreateVenue", new { VenueId = @Model.VenueList[i].VenueId }) |
+                    @Html.ActionLink("Delete", "Delete", new { VenueId = @Model.VenueList[i].VenueId })
                 </td>
             </tr>
             x = x + 1;

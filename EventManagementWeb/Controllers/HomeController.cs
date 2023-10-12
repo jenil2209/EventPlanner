@@ -10,7 +10,9 @@ namespace EventManagementWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Convert.ToInt32(Session["UserID"]) > 0)
+                return View();
+            else return RedirectToAction("Login", "User");
         }
 
         public ActionResult About()

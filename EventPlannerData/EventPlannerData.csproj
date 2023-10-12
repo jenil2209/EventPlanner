@@ -87,6 +87,9 @@
     <Compile Include="tbFood.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbRegistration.cs">
+      <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbRole.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>

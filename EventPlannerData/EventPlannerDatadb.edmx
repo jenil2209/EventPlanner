@@ -67,6 +67,26 @@
           <Property Name="Createdate" Type="datetime" />
           <Property Name="FoodCost" Type="int" />
         </EntityType>
+        <EntityType Name="tbRegistration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="20" />
+          <Property Name="EmailID" Type="varchar" MaxLength="100" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="RoleID" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbRoles">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -110,6 +130,7 @@
           <EntitySet Name="tbCountry" EntityType="Self.tbCountry" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbEventTypes" EntityType="Self.tbEventTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbFood" EntityType="Self.tbFood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbRegistration" EntityType="Self.tbRegistration" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbRoles" EntityType="Self.tbRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbState" EntityType="Self.tbState" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbVenue" EntityType="Self.tbVenue" Schema="dbo" store:Type="Tables" />
@@ -205,6 +226,7 @@
           <EntitySet Name="tbVenues" EntityType="Self.tbVenue" />
           <EntitySet Name="tbFoods" EntityType="dbEventPlannerModel.tbFood" />
           <EntitySet Name="Users" EntityType="dbEventPlannerModel.User" />
+          <EntitySet Name="tbRegistrations" EntityType="dbEventPlannerModel.tbRegistration" />
         </EntityContainer>
         <EntityType Name="tbFood">
           <Key>
@@ -228,6 +250,26 @@
           <Property Name="FullName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="PasswordHash" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbRegistration">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="RoleID" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -340,6 +382,27 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbRegistrations">
+            <EntityTypeMapping TypeName="dbEventPlannerModel.tbRegistration">
+              <MappingFragment StoreEntitySet="tbRegistration">
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
