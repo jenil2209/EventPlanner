@@ -88,7 +88,7 @@ namespace EventManagementWeb.Controllers
         [HttpPost]
         public ActionResult CreateEvent(EventBooking model, string btnSubmit = "")
         {
-            //if (btnSubmit == "Send Invitation")
+            if (btnSubmit == "Send Invitation")
             {
                 return RedirectToAction("SendInvitations", "Events", model);
             }
@@ -256,6 +256,7 @@ namespace EventManagementWeb.Controllers
                         EventName = tb2.EventType,
                         DueDate = tb.DueDate,
                         IsPending = tb.IsPending,
+                        TodoName = tb.TaskName,
                     }).ToList();
 
             //list = (from tb in objEntity.tbEventsTodoes
@@ -286,9 +287,10 @@ namespace EventManagementWeb.Controllers
                 {
                     objModel.TodoId = table.Id;
                     objModel.TaskName = table.TaskName;
-                    objModel.Pending = table.IsPending == true ? "Pending" : "Done";
+                    objModel.Pending = table.IsPending;
                     objModel.Description = table.Description;
                     objModel.EventType = table.EventId;
+                    objModel.DueDate = table.DueDate;
                 }
             }
             // Event Types List for dropdown
@@ -298,7 +300,45 @@ namespace EventManagementWeb.Controllers
                                        EventId = tb.EventID,
                                        Type = tb.EventType
                                    }).ToList();
+            objModel.DueDate = DateTime.Now;
             return View(objModel);
+        }
+
+        [HttpPost]
+        public ActionResult CreateTodo(TodoMainModel model, DateTime? Duedatestr, string btnSubmit = "")
+        {
+
+            if (Convert.ToInt32(model.TodoId) > 0)
+            {
+                var tabledate = (from tb in objEntity.tbEventsTodoes where tb.Id == model.TodoId select tb).FirstOrDefault();
+                if (tabledate != null)
+                {
+                    tabledate.EventId = model.EventType;
+                    tabledate.DueDate = model.DueDate;
+                    tabledate.Description = model.Description;
+                    tabledate.IsPending = model.Pending;
+                    tabledate.TaskName = model.TaskName;
+
+                    objEntity.SaveChanges();
+                }
+            }
+            else
+            {
+                if (model != null)
+                {
+                    tbEventsTodo table = new tbEventsTodo();
+                    table.Id = model.TodoId;
+                    table.EventId = model.EventType;
+                    table.Description = model.Description;
+                    table.TaskName = model.TaskName;
+                    table.IsPending = model.Pending;
+                    table.DueDate = Convert.ToDateTime(Duedatestr).Date;
+                    objEntity.tbEventsTodoes.Add(table);
+                    objEntity.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("EventsList", "Events");
         }
     }
 }

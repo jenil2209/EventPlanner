@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { style = "color: black; min-width:500px !important; max-width:700px !important; height:100px !important;" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +33,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EventType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(n => n.EventType, new SelectList(Model.EventTypes, "EventID", "Type"), new { @class = "form-control-sm w-100" })
+                @Html.DropDownListFor(n => n.EventType, new SelectList(Model.EventTypes, "EventID", "Type"), new { style = "color:black !important;", @class = "form-control-sm w-100" })
                 @Html.ValidationMessageFor(model => model.EventType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="date" name="Duedatestr" value="@Model.DueDate" id="Duedatestr" class="form-control" />
                 @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -56,7 +56,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" name="btnSubmit" value="Create" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -65,3 +65,14 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#DueDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'mm/dd/yy',
+            gotoCurrent: true
+        });
+    });
+</script>

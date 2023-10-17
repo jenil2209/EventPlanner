@@ -70,7 +70,7 @@ namespace EventManagementWeb.ViewModels
         [Display(Name = "Booking Date")]
         public DateTime? DueDate { get; set; }
 
-        public string Pending { get; set; }
+        public bool? Pending { get; set; }
         public List<EventType> EventTypes { get; set; }
         public List<TodoList> ToDoList { get; set; }
     }
