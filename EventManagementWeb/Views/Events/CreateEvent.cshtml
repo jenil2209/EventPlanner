@@ -15,17 +15,10 @@
         <hr />
         @Html.HiddenFor(x => x.EventBookingId)
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <div class="form-group">
             @Html.LabelFor(model => model.EventType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-
-                @Html.DropDownListFor(
-    model => model.EventType,
-    new SelectList(Model.EventTypes, "EventId", "Type"),
-    "Select an Event Type",
-    new { @class = "form-control" }
-)
+                @Html.DropDownListFor(n => n.EventType, new SelectList(Model.EventTypes, "EventID", "Type"), new { @class = "form-control-sm w-100" })
                 @Html.ValidationMessageFor(model => model.EventType, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,7 +46,6 @@
                 @Html.ValidationMessageFor(model => model.BookingDate, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -61,13 +53,13 @@
                 @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
             </div>
         </div>
+       
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create Event" class="btn btn-success" />
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Send Invitation" class="btn btn-success" />

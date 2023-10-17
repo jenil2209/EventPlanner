@@ -171,7 +171,7 @@ namespace EventManagementWeb.Controllers
             {
                 Console.WriteLine("Error: " + ex.Message);
             }
-            return View();
+            return RedirectToAction("EventsList", "Events");
         }
 
         protected void sendEmail(string EmailTo, string Venue)
@@ -184,15 +184,15 @@ namespace EventManagementWeb.Controllers
             string strSubject = "Event Invitation";
             MailMessage mailMessage = new MailMessage();
             MailAddress fromAddress = new MailAddress(strFrom);
-            
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com",587);
+
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.Host = host;
             smtpClient.Port = 587;
             smtpClient.EnableSsl = true;
             smtpClient.UseDefaultCredentials = false;
             NetworkCredential basicCredential = new NetworkCredential(strFrom, pass);
-          //  NetworkCredential basicCredential = new NetworkCredential("A00271994@mycambrian.ca", "Sudbury123");
+            //  NetworkCredential basicCredential = new NetworkCredential("A00271994@mycambrian.ca", "Sudbury123");
             _ = new SmtpClient();
             smtpClient.Credentials = basicCredential;
             mailMessage.From = fromAddress;
@@ -203,7 +203,7 @@ namespace EventManagementWeb.Controllers
             string color_Blue = "color:blue";
             string list_Bold = "font-weight: bold;";
             // added for image attachment in body  
-           // var contentID = "Image";
+            // var contentID = "Image";
             //var inlineLogo = new Attachment(@"E:\Images\Screenshot.png");
             //inlineLogo.ContentId = contentID;
             //inlineLogo.ContentDisposition.Inline = true;
@@ -238,6 +238,67 @@ namespace EventManagementWeb.Controllers
                 }
             }
             return RedirectToAction("EventsList");
+        }
+
+        public ActionResult AddTodo(int EventBookingId = 0)
+        {
+            TodoMainModel model = new TodoMainModel();
+            List<TodoList> list = new List<TodoList>();
+
+            var todoEvent = (from tb in objEntity.tbEventsTodoes select tb.EventId).Distinct().ToList();
+
+            list = (from tb in objEntity.tbEventsTodoes
+                    join tb2 in objEntity.tbEventTypes on tb.EventId equals tb2.EventID
+                    where tb.EventId == EventBookingId
+                    select new TodoList
+                    {
+                        TodoId = tb.Id,
+                        EventName = tb2.EventType,
+                        DueDate = tb.DueDate,
+                        IsPending = tb.IsPending,
+                    }).ToList();
+
+            //list = (from tb in objEntity.tbEventsTodoes
+            //        join tb2 in objEntity.tbEventTypes on tb.EventId equals tb2.EventID
+            //        select new TodoList
+            //        {
+            //            TodoId = tb.Id,
+            //            EventName = tb2.EventType,
+            //            DueDate = tb.DueDate,
+            //            IsPending = tb.IsPending,
+            //        }).ToList();
+
+            if (list != null)
+            {
+                model.ToDoList = list;
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult CreateTodo(int TodoId = 0)
+        {
+            TodoMainModel objModel = new TodoMainModel();
+            if (TodoId > 0)
+            {
+                var table = objEntity.tbEventsTodoes.Where(x => x.Id == TodoId).FirstOrDefault();
+                if (table != null)
+                {
+                    objModel.TodoId = table.Id;
+                    objModel.TaskName = table.TaskName;
+                    objModel.Pending = table.IsPending == true ? "Pending" : "Done";
+                    objModel.Description = table.Description;
+                    objModel.EventType = table.EventId;
+                }
+            }
+            // Event Types List for dropdown
+            objModel.EventTypes = (from tb in objEntity.tbEventTypes
+                                   select new EventType
+                                   {
+                                       EventId = tb.EventID,
+                                       Type = tb.EventType
+                                   }).ToList();
+            return View(objModel);
         }
     }
 }

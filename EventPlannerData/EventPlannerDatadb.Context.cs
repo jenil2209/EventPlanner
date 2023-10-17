@@ -36,5 +36,6 @@ namespace EventPlannerData
         public virtual DbSet<tbFood> tbFoods { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<tbRegistration> tbRegistrations { get; set; }
+        public virtual DbSet<tbEventsTodo> tbEventsTodoes { get; set; }
     }
 }

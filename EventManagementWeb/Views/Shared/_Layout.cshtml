@@ -15,22 +15,25 @@
     <script src="~/Scripts/CommonJS.js"></script>
     <style type="text/css">
         body {
-            background-image: url('../../content/images/eventBckgImg.jpg');
-            margin: 0;
+        background-image: url('../../content/images/eventBckgImg.jpg');
+        margin: 0;
+        }
+        .backgImg{
+        background-image: url('../../content/images/Klsb1x.jpg');
         }
     </style>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var Userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
-            if (Userid > 0) {
-                $("#login").hide();
-            }
-            else {
-                $("#login").show();
-                $("#logout").hide();
-            }
-            });
+        var Userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+        if (Userid > 0) {
+        $("#login").hide();
+        }
+        else {
+        $("#login").show();
+        $("#logout").hide();
+        }
+        });
     </script>
 </head>
 <body>
@@ -56,17 +59,14 @@
                 </ul>
             </div>
         </div>
-        @*<div class="circle">
-                <p class="circle-inner">AY</p>
-            </div>*@
     </div>
 
-    <div class="container body-content" style="background: cornsilk;">
+    <div class="container body-content backgImg" style="color: aliceblue;">
         @RenderBody()
         <hr />
         <footer>
             <p>Your Event Planning Partner</p>
-            <a name="logout" id="logout" href="@Url.Action("Logout","User")">Logout</a>
+            <a name="logout" id="logout" href="@Url.Action(" Logout","User")">Logout</a>
         </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")

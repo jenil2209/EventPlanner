@@ -81,6 +81,9 @@
     <Compile Include="tbCountry.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>
+    <Compile Include="tbEventsTodo.cs">
+      <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
+    </Compile>
     <Compile Include="tbEventType.cs">
       <DependentUpon>EventPlannerDatadb.tt</DependentUpon>
     </Compile>

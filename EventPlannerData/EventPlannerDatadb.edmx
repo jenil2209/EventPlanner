@@ -45,6 +45,17 @@
           <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CountryName" Type="varchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="tbEventsTodo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskName" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="EventId" Type="int" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="IsPending" Type="bit" />
+        </EntityType>
         <EntityType Name="tbEventTypes">
           <Key>
             <PropertyRef Name="EventID" />
@@ -128,6 +139,7 @@
           <EntitySet Name="tbBookingVenue" EntityType="Self.tbBookingVenue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCity" EntityType="Self.tbCity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbCountry" EntityType="Self.tbCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbEventsTodo" EntityType="Self.tbEventsTodo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbEventTypes" EntityType="Self.tbEventTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbFood" EntityType="Self.tbFood" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbRegistration" EntityType="Self.tbRegistration" Schema="dbo" store:Type="Tables" />
@@ -227,6 +239,7 @@
           <EntitySet Name="tbFoods" EntityType="dbEventPlannerModel.tbFood" />
           <EntitySet Name="Users" EntityType="dbEventPlannerModel.User" />
           <EntitySet Name="tbRegistrations" EntityType="dbEventPlannerModel.tbRegistration" />
+          <EntitySet Name="tbEventsTodoes" EntityType="dbEventPlannerModel.tbEventsTodo" />
         </EntityContainer>
         <EntityType Name="tbFood">
           <Key>
@@ -270,6 +283,17 @@
           <Property Name="BirthDate" Type="DateTime" Precision="3" />
           <Property Name="RoleID" Type="Int32" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbEventsTodo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="EventId" Type="Int32" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="IsPending" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -403,6 +427,18 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbEventsTodoes">
+            <EntityTypeMapping TypeName="dbEventPlannerModel.tbEventsTodo">
+              <MappingFragment StoreEntitySet="tbEventsTodo">
+                <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

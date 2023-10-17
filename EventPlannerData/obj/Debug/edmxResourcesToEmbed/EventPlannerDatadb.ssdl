@@ -40,6 +40,17 @@
     <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CountryName" Type="varchar" MaxLength="200" />
   </EntityType>
+  <EntityType Name="tbEventsTodo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="EventId" Type="int" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="IsPending" Type="bit" />
+  </EntityType>
   <EntityType Name="tbEventTypes">
     <Key>
       <PropertyRef Name="EventID" />
@@ -123,6 +134,7 @@
     <EntitySet Name="tbBookingVenue" EntityType="Self.tbBookingVenue" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbCity" EntityType="Self.tbCity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbCountry" EntityType="Self.tbCountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbEventsTodo" EntityType="Self.tbEventsTodo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbEventTypes" EntityType="Self.tbEventTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbFood" EntityType="Self.tbFood" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="tbRegistration" EntityType="Self.tbRegistration" Schema="dbo" store:Type="Tables" />

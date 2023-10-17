@@ -87,6 +87,7 @@
     <EntitySet Name="tbFoods" EntityType="dbEventPlannerModel.tbFood" />
     <EntitySet Name="Users" EntityType="dbEventPlannerModel.User" />
     <EntitySet Name="tbRegistrations" EntityType="dbEventPlannerModel.tbRegistration" />
+    <EntitySet Name="tbEventsTodoes" EntityType="dbEventPlannerModel.tbEventsTodo" />
   </EntityContainer>
   <EntityType Name="tbFood">
     <Key>
@@ -130,5 +131,16 @@
     <Property Name="BirthDate" Type="DateTime" Precision="3" />
     <Property Name="RoleID" Type="Int32" />
     <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tbEventsTodo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="EventId" Type="Int32" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="IsPending" Type="Boolean" />
   </EntityType>
 </Schema>

@@ -1,0 +1,62 @@
+﻿@model EventManagementWeb.ViewModels.TodoMainModel
+
+@{
+    ViewBag.Title = "EventsList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Events List</h2>
+
+<p>
+    @Html.ActionLink("Add Todo", "CreateTodo", new { @class = "btn-info clsForAdmin", EventBookingId = 0 })
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>Sr No</th>
+        <th>Event Name</th>
+        <th>To-Do Name</th>
+        <th>Due Date</th>
+        <th>Pending</th>
+    </tr>
+
+    @if (Model.ToDoList.Count > 0)
+    {
+        var x = 1;
+        for (int i = 0; i < Model.ToDoList.Count; i++)
+        {
+
+            <tr>
+                <td>
+                    @x
+                </td>
+                <td>
+                    @Model.ToDoList[i].EventName
+                    @Html.HiddenFor(m => Model.ToDoList[i].EventName, new { @class = "hdnEventName" })
+                </td>
+                <td>
+                    @Model.ToDoList[i].TodoName
+                    @Html.HiddenFor(m => Model.ToDoList[i].TodoName, new { @class = "hdnTodoName" })
+                </td>
+                <td>
+                    @Model.ToDoList[i].DueDate
+                    @Html.HiddenFor(m => Model.ToDoList[i].DueDate, new { @class = "hdnDueDate" })
+                </td>
+                <td>
+                    @Model.ToDoList[i].IsPending
+                    @Html.HiddenFor(m => Model.ToDoList[i].IsPending, new { @class = "hdnIsPending" })
+                </td>
+            </tr>
+            x = x + 1;
+        }
+    }
+</table>
+<script type="text/javascript">
+
+    var Userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+    if (Userid > 0) {
+        $(".clsForAdmin").show();
+            }
+            else {
+                $(".clsForAdmin").hide();
+            }
+</script>

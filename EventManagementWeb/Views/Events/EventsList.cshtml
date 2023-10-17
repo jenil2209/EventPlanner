@@ -49,6 +49,7 @@
                 <td class="clsForAdmin">
                     @Html.ActionLink("Edit", "CreateEvent", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
                     @Html.ActionLink("Delete", "Delete", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
+                    @Html.ActionLink("ToDo", "AddTodo", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
                 </td>
             </tr>
             x = x + 1;
