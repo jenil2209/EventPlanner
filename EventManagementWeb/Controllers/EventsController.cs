@@ -88,10 +88,11 @@ namespace EventManagementWeb.Controllers
         [HttpPost]
         public ActionResult CreateEvent(EventBooking model, string btnSubmit = "")
         {
-            if (btnSubmit == "Send Invitation")
+            //if (btnSubmit == "Send Invitation")
             {
                 return RedirectToAction("SendInvitations", "Events", model);
             }
+
             if (model.EventBookingId > 0)
             {
                 var tabledate = (from tb in objEntity.tbBookingVenues where tb.BookingVenueID == model.EventBookingId select tb).FirstOrDefault();
@@ -104,17 +105,20 @@ namespace EventManagementWeb.Controllers
                     objEntity.SaveChanges();
                 }
             }
-            if (model != null)
+            else
             {
-                tbBookingVenue table = new tbBookingVenue();
-                table.CreatedDate = model.BookingDate;
-                table.EventTypeID = model.EventType;
-                table.VenueID = model.VenueType;
-                table.GuestCount = model.GuestCount;
-                table.BookingID = Convert.ToInt32(GenerateBookingNumber());
+                if (model != null)
+                {
+                    tbBookingVenue table = new tbBookingVenue();
+                    table.CreatedDate = model.BookingDate;
+                    table.EventTypeID = model.EventType;
+                    table.VenueID = model.VenueType;
+                    table.GuestCount = model.GuestCount;
+                    table.BookingID = Convert.ToInt32(GenerateBookingNumber());
 
-                objEntity.tbBookingVenues.Add(table);
-                objEntity.SaveChanges();
+                    objEntity.tbBookingVenues.Add(table);
+                    objEntity.SaveChanges();
+                }
             }
 
             return RedirectToAction("EventsList", "Events");
@@ -172,19 +176,24 @@ namespace EventManagementWeb.Controllers
 
         protected void sendEmail(string EmailTo, string Venue)
         {
-            string strFrom = ConfigurationManager.AppSettings["Email"].ToString();
-            string pass = ConfigurationManager.AppSettings["Password"].ToString();
-            string host = ConfigurationManager.AppSettings["Host"].ToString();
+            //string strFrom = ConfigurationManager.AppSettings["Email"].ToString();
+            //string pass = ConfigurationManager.AppSettings["Password"].ToString();
+            string strFrom = "sanjeevk@itpathsolutions.com";
+            string pass = "Sanjeev@123456";
+            string host = "smtp.gmail.com";
             string strSubject = "Event Invitation";
             MailMessage mailMessage = new MailMessage();
             MailAddress fromAddress = new MailAddress(strFrom);
-            SmtpClient smtpClient = new SmtpClient();
+            
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com",587);
             smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtpClient.Host = host;
             smtpClient.Port = 587;
             smtpClient.EnableSsl = true;
             smtpClient.UseDefaultCredentials = false;
             NetworkCredential basicCredential = new NetworkCredential(strFrom, pass);
+          //  NetworkCredential basicCredential = new NetworkCredential("A00271994@mycambrian.ca", "Sudbury123");
+            _ = new SmtpClient();
             smtpClient.Credentials = basicCredential;
             mailMessage.From = fromAddress;
             mailMessage.Subject = strSubject;
@@ -194,13 +203,13 @@ namespace EventManagementWeb.Controllers
             string color_Blue = "color:blue";
             string list_Bold = "font-weight: bold;";
             // added for image attachment in body  
-            var contentID = "Image";
-            var inlineLogo = new Attachment(@"E:\Images\Screenshot.png");
-            inlineLogo.ContentId = contentID;
-            inlineLogo.ContentDisposition.Inline = true;
-            inlineLogo.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
-            mailMessage.Attachments.Add(inlineLogo);
-            mailMessage.Body = "<htm><body> <h1 style=\"" + color_Blue + "\">Please join our event</h1> <p>Dear Friend,</p> <p><strong>We are pleased to invite you to attend the even.</strong></p><ol><li style=\"" + list_Bold + "\">Event Venue:" + Venue + "</li><li style=\"" + list_Bold + "\">Event Date: x Dec 2015 </li><li style=\"" + list_Bold + "\">Event Start Time: 9 AM sharp </li><li style=\"" + list_Bold + "\">Conatct Us : 123487972 </li> <ol><p>Thanks</p><br/> <a href=\"" + link + "\"><img src=\"cid:" + contentID + "\"></a> </body></html>";
+           // var contentID = "Image";
+            //var inlineLogo = new Attachment(@"E:\Images\Screenshot.png");
+            //inlineLogo.ContentId = contentID;
+            //inlineLogo.ContentDisposition.Inline = true;
+            //inlineLogo.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+            //mailMessage.Attachments.Add(inlineLogo);
+            mailMessage.Body = "<htm><body> <h1 style=\"" + color_Blue + "\">Please join our event</h1> <p>Dear Friend,</p> <p><strong>We are pleased to invite you to attend the event.</strong></p><ol><li style=\"" + list_Bold + "\">Event Venue:" + Venue + "</li><li style=\"" + list_Bold + "\">Event Date: 2023 </li><li style=\"" + list_Bold + "\">Event Start Time: 9 AM sharp </li><li style=\"" + list_Bold + "\">Conatct Us : 123487972 </li> <ol><p>Thanks</p><br/></body></html>";
             mailMessage.To.Add(EmailTo);
             try
             {
@@ -211,6 +220,24 @@ namespace EventManagementWeb.Controllers
             {
                 ViewBag.exception = ex.Message;
             }
+        }
+
+        public ActionResult Delete(int EventBookingId)
+        {
+            if (EventBookingId > 0)
+            {
+                using (var dbcontext = new dbEventPlannerEntities())
+                {
+                    var x = (from y in dbcontext.tbBookingVenues
+                             where y.BookingVenueID == EventBookingId
+                             select y).FirstOrDefault();
+                    dbcontext.tbBookingVenues.Remove(x);
+                    dbcontext.SaveChanges();
+
+                    ViewBag.message = "Event Deleted Successfully !!";
+                }
+            }
+            return RedirectToAction("EventsList");
         }
     }
 }

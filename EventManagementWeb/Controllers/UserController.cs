@@ -3,7 +3,6 @@ using EventPlannerData;
 using System;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 using User = EventPlannerData.User;
@@ -132,7 +131,8 @@ namespace EventManagementWeb.Controllers
         {
             // Sign the user out
             FormsAuthentication.SignOut();
-
+            Session["UserID"] = 0;
+            Session["UserName"] = "";
             // Redirect to the home page or any other desired page
             return RedirectToAction("Index", "Home");
 
@@ -179,14 +179,22 @@ namespace EventManagementWeb.Controllers
                 //// Convert the byte array to a base64-encoded string
                 //string hashedPassword = Convert.ToBase64String(hashWithSaltBytes);
                 var User = (from tb in db.Users where tb.Email == Email && tb.PasswordHash == password select tb).FirstOrDefault();
-                if (Convert.ToInt32(User.UserId) > 0)
+                if (User != null)
                 {
-                    Session["UserID"] = User.UserId.ToString();
-                    Session["UserName"] = User.FullName.ToString();
-                    return RedirectToAction("Index", "Home", new { UserId = User.UserId });
+                    if (Convert.ToInt32(User.UserId) > 0)
+                    {
+                        Session["UserID"] = User.UserId.ToString();
+                        Session["UserName"] = User.FullName.ToString();
+                        return RedirectToAction("Index", "Home", new { UserId = User.UserId });
+                    }
+                    else
+                    {
+                        return View();
+                    }
                 }
                 else
                 {
+                    ViewBag.message = "Invalid Login Credentials!!";
                     return View();
                 }
                 //return Content(password);

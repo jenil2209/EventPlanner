@@ -1,12 +1,24 @@
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EventPlannerData.dll.config
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EventPlannerData.dll
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EventPlannerData.pdb
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.dll
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.xml
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.csproj.AssemblyReference.cache
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.csproj.CoreCompileInputs.cache
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.csproj.CopyComplete
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.dll
-C:\Users\admin\Desktop\New folder (2)\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.pdb
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EventPlannerData.dll.config
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EventPlannerData.dll
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EventPlannerData.pdb
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.csproj.CopyComplete
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.dll
+C:\Users\admin\Desktop\EventManagementWeb-master\EventPlannerData\obj\Debug\EventPlannerData.pdb
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EventPlannerData.dll.config
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EventPlannerData.dll
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EventPlannerData.pdb
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.dll
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.xml
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.csproj.CopyComplete
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.dll
+C:\Users\admin\source\repos\EventPlanner\EventPlannerData\obj\Debug\EventPlannerData.pdb

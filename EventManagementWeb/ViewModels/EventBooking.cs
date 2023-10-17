@@ -12,7 +12,7 @@ namespace EventManagementWeb.ViewModels
         public int EventBookingId { get; set; }
         [Required]
         [Display(Name = "Event Type")]
-        public int? EventType { get; set; }
+        public int ? EventType { get; set; }
         [Required]
         [Display(Name = "Venue Type")]
         public int? VenueType { get; set; }

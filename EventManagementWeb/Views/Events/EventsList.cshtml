@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EventsList</h2>
+<h2>Events List</h2>
 
 <p>
-    @Html.ActionLink("Add Event", "CreateEvent", new { @class = "btn-info", EventBookingId = 0 })
+    @Html.ActionLink("Add Event", "CreateEvent", new { @class = "btn-info clsForAdmin", EventBookingId = 0 })
 </p>
 <table class="table table-hover">
     <tr>
@@ -17,7 +17,7 @@
         <th>Booking Date</th>
         <th>Event Type</th>
         <th>Venue</th>
-        <th>Action</th>
+        <th class="clsForAdmin">Action</th>
     </tr>
 
     @if (Model.EventBookingsLists.Count > 0)
@@ -46,7 +46,7 @@
                     @Model.EventBookingsLists[i].Venue
                     @Html.HiddenFor(m => Model.EventBookingsLists[i].Venue, new { @class = "hdnVenue" })
                 </td>
-                <td>
+                <td class="clsForAdmin">
                     @Html.ActionLink("Edit", "CreateEvent", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
                     @Html.ActionLink("Delete", "Delete", new { EventBookingId = @Model.EventBookingsLists[i].EventBookingId }) |
                 </td>
@@ -55,3 +55,13 @@
         }
     }
 </table>
+<script type="text/javascript">
+
+    var Userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+    if (Userid > 0) {
+        $(".clsForAdmin").show();
+            }
+            else {
+                $(".clsForAdmin").hide();
+            }
+</script>

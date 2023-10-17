@@ -8,14 +8,14 @@
 <h2>Venue List</h2>
 
 <p>
-    @Html.ActionLink("Add Venue", "CreateVenue", new { @class = "btn-info" })
+    @Html.ActionLink("Add Venue", "CreateVenue", new { @class = "btn-info clsForAdmin" })
 </p>
-<table class="table">
+<table class="table table-hover">
     <tr>
         <th>Sr No</th>
         <th>Venue Name</th>
         <th>Venue Cost($)</th>
-        <th>Action</th>
+        <th class="clsForAdmin">Action</th>
     </tr>
 
 
@@ -36,7 +36,7 @@
                     @Model.VenueList[i].VenueCost
                     @Html.HiddenFor(m => Model.VenueList[i].VenueCost, new { @class = "hdnVenueCost" })
                 </td>
-                <td>
+                <td class="clsForAdmin">
                     @Html.ActionLink("Edit", "CreateVenue", new { VenueId = @Model.VenueList[i].VenueId }) |
                     @Html.ActionLink("Delete", "Delete", new { VenueId = @Model.VenueList[i].VenueId })
                 </td>
@@ -46,3 +46,18 @@
     }
 
 </table>
+<script type="text/javascript">
+
+    var Userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+    if (Userid > 0) {
+        $(".clsForAdmin").show();
+            }
+            else {
+                $(".clsForAdmin").hide();
+            }
+</script>
+<style type="text/css">
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: #808080;
+    }
+</style>

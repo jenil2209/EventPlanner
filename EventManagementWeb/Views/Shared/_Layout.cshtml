@@ -7,15 +7,31 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <link href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/toastr.min.js"></script>
-
+    <link rel="stylesheet" href="~/Content/CommonCSS.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/CommonJS.js"></script>
     <style type="text/css">
         body {
             background-image: url('../../content/images/eventBckgImg.jpg');
             margin: 0;
         }
     </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var Userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+            if (Userid > 0) {
+                $("#login").hide();
+            }
+            else {
+                $("#login").show();
+                $("#logout").hide();
+            }
+            });
+    </script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -36,21 +52,26 @@
                     <li>@Html.ActionLink("Bookings", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "User")</li>
+                    <li id="login">@Html.ActionLink("Login", "Login", "User")</li>
                 </ul>
             </div>
         </div>
+        @*<div class="circle">
+                <p class="circle-inner">AY</p>
+            </div>*@
     </div>
+
     <div class="container body-content" style="background: cornsilk;">
         @RenderBody()
         <hr />
         <footer>
             <p>Your Event Planning Partner</p>
+            <a name="logout" id="logout" href="@Url.Action("Logout","User")">Logout</a>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
+
 </html>

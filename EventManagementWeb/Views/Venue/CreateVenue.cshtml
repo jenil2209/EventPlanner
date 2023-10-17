@@ -8,7 +8,7 @@
 <h2>Create Venue</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("CreateVenue", "Venue", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -72,17 +72,47 @@
         </div>
 
         <div class="form-group">
+            @Html.Label("Upload Venue", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="File" id="File" class="" onchange="displaySelectedFile()" />
+                @Html.ValidationMessageFor(model => model.VenueCost, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+
+        <div class="image-box" style="text-align: center; display:none;">
+            <img id="image-preview" src="#" alt="Image Preview" style="width:35%;" />
+            <p id="selected-file-name"></p>
+        </div>
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>
-}
 
+}
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
+<script type="text/javascript">
+    if ('@TempData["message"]') != null) {
+        alert('TempData["message"]');
+    }
+    function displaySelectedFile() {
+        var input = document.getElementById("File");
+        var output = document.getElementById("selected-file-name");
+        output.textContent = input.files[0].name;
+        if (input.files[0].name != null) {
+            $(".image-box").show();
+        }
+        // Display the selected image in the image preview
+        var imagePreview = document.getElementById("image-preview");
+        imagePreview.src = URL.createObjectURL(input.files[0]);
+    }
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
 }
