@@ -54,6 +54,7 @@ namespace EventManagementWeb.ViewModels
     public class TodoMainModel
     {
         public int TodoId { get; set; }
+        public int? EventBookingId { get; set; }
         [Required]
         [Display(Name = "Event Type")]
         public int? EventType { get; set; }

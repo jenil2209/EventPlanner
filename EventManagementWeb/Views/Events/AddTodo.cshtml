@@ -8,7 +8,7 @@
 <h2>Events List</h2>
 
 <p>
-    @Html.ActionLink("Add Todo", "CreateTodo", new { @class = "btn-info clsForAdmin", EventBookingId = 0 })
+    @Html.ActionLink("Add Todo", "CreateTodo", new { EventBookingId = Model.EventBookingId })
 </p>
 <table class="table table-hover">
     <tr>
@@ -49,6 +49,7 @@
             x = x + 1;
         }
     }
+    @Html.HiddenFor(m => m.EventBookingId, new { @class = "EventBookingId" })
 </table>
 <script type="text/javascript">
 

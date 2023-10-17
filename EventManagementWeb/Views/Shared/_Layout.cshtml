@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Event Planner</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -15,11 +15,12 @@
     <script src="~/Scripts/CommonJS.js"></script>
     <style type="text/css">
         body {
-        background-image: url('../../content/images/eventBckgImg.jpg');
-        margin: 0;
+            background-image: url('../../content/images/eventBckgImg.jpg');
+            margin: 0;
         }
-        .backgImg{
-        background-image: url('../../content/images/Klsb1x.jpg');
+
+        .backgImg {
+            background-image: url('../../content/images/Klsb1x.jpg');
         }
     </style>
 
@@ -52,7 +53,6 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Venues", "VenueList", "Venue")</li>
                     <li>@Html.ActionLink("Events", "EventsList", "Events")</li>
-                    <li>@Html.ActionLink("Bookings", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "Index", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li id="login">@Html.ActionLink("Login", "Login", "User")</li>

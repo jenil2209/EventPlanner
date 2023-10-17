@@ -20,6 +20,8 @@ namespace EventManagementWeb.Controllers
         // GET: Booking
         public ActionResult EventsList()
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             EventBookinkgListView model = new EventBookinkgListView();
             List<EventBookingsList> list = new List<EventBookingsList>();
 
@@ -44,6 +46,8 @@ namespace EventManagementWeb.Controllers
         [HttpGet]
         public ActionResult CreateEvent(int EventBookingId = 0)
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             EventBooking model = new EventBooking();
 
             if (EventBookingId > 0)
@@ -88,6 +92,8 @@ namespace EventManagementWeb.Controllers
         [HttpPost]
         public ActionResult CreateEvent(EventBooking model, string btnSubmit = "")
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             if (btnSubmit == "Send Invitation")
             {
                 return RedirectToAction("SendInvitations", "Events", model);
@@ -156,6 +162,8 @@ namespace EventManagementWeb.Controllers
 
         public ActionResult SendInvitations(EventBooking model)
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             try
             {
                 //    if (file != null && file.ContentLength > 0)
@@ -224,6 +232,8 @@ namespace EventManagementWeb.Controllers
 
         public ActionResult Delete(int EventBookingId)
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             if (EventBookingId > 0)
             {
                 using (var dbcontext = new dbEventPlannerEntities())
@@ -242,13 +252,16 @@ namespace EventManagementWeb.Controllers
 
         public ActionResult AddTodo(int EventBookingId = 0)
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             TodoMainModel model = new TodoMainModel();
             List<TodoList> list = new List<TodoList>();
 
             var todoEvent = (from tb in objEntity.tbEventsTodoes select tb.EventId).Distinct().ToList();
 
             list = (from tb in objEntity.tbEventsTodoes
-                    join tb2 in objEntity.tbEventTypes on tb.EventId equals tb2.EventID
+                    join tb3 in objEntity.tbBookingVenues on tb.EventId equals tb3.BookingVenueID
+                    join tb2 in objEntity.tbEventTypes on tb3.EventTypeID equals tb2.EventID
                     where tb.EventId == EventBookingId
                     select new TodoList
                     {
@@ -257,8 +270,9 @@ namespace EventManagementWeb.Controllers
                         DueDate = tb.DueDate,
                         IsPending = tb.IsPending,
                         TodoName = tb.TaskName,
+                        EventId = tb.EventId
                     }).ToList();
-
+            model.EventBookingId = EventBookingId;
             //list = (from tb in objEntity.tbEventsTodoes
             //        join tb2 in objEntity.tbEventTypes on tb.EventId equals tb2.EventID
             //        select new TodoList
@@ -277,21 +291,32 @@ namespace EventManagementWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateTodo(int TodoId = 0)
+        public ActionResult CreateTodo(TodoMainModel model, int TodoId = 0, int EventBookingId = 0)
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
             TodoMainModel objModel = new TodoMainModel();
             if (TodoId > 0)
             {
                 var table = objEntity.tbEventsTodoes.Where(x => x.Id == TodoId).FirstOrDefault();
+                objModel.EventBookingId = table.EventId;
+                var eventTypeId = (from tb in objEntity.tbBookingVenues
+                                   join tb2 in objEntity.tbEventTypes on tb.EventTypeID equals tb2.EventID
+                                   where tb.BookingVenueID == objModel.EventBookingId
+                                   select tb.EventTypeID).FirstOrDefault();
                 if (table != null)
                 {
                     objModel.TodoId = table.Id;
                     objModel.TaskName = table.TaskName;
                     objModel.Pending = table.IsPending;
                     objModel.Description = table.Description;
-                    objModel.EventType = table.EventId;
+                    objModel.EventType = eventTypeId;
                     objModel.DueDate = table.DueDate;
                 }
+            }
+            if (Convert.ToInt32(objModel.EventBookingId) == 0)
+            {
+                objModel.EventBookingId = EventBookingId;
             }
             // Event Types List for dropdown
             objModel.EventTypes = (from tb in objEntity.tbEventTypes
@@ -307,13 +332,15 @@ namespace EventManagementWeb.Controllers
         [HttpPost]
         public ActionResult CreateTodo(TodoMainModel model, DateTime? Duedatestr, string btnSubmit = "")
         {
+            if (Convert.ToInt32(Session["UserID"]) == 0)
+                return RedirectToAction("Login", "User");
 
             if (Convert.ToInt32(model.TodoId) > 0)
             {
                 var tabledate = (from tb in objEntity.tbEventsTodoes where tb.Id == model.TodoId select tb).FirstOrDefault();
                 if (tabledate != null)
                 {
-                    tabledate.EventId = model.EventType;
+                    tabledate.EventId = model.EventBookingId;
                     tabledate.DueDate = model.DueDate;
                     tabledate.Description = model.Description;
                     tabledate.IsPending = model.Pending;
@@ -328,7 +355,7 @@ namespace EventManagementWeb.Controllers
                 {
                     tbEventsTodo table = new tbEventsTodo();
                     table.Id = model.TodoId;
-                    table.EventId = model.EventType;
+                    table.EventId = model.EventBookingId;
                     table.Description = model.Description;
                     table.TaskName = model.TaskName;
                     table.IsPending = model.Pending;
@@ -337,8 +364,7 @@ namespace EventManagementWeb.Controllers
                     objEntity.SaveChanges();
                 }
             }
-
-            return RedirectToAction("EventsList", "Events");
+            return RedirectToAction("AddTodo", "Events");
         }
     }
 }
