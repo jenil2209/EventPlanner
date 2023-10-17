@@ -62,11 +62,20 @@ namespace EventManagementWeb.Controllers
                     string link = "http://c-sharpcorner.com/";
                     string color_Blue = "color:blue";
                     string list_Bold = "font-weight: bold;";
-                    mailMessage.Body = "<htm><body> <h1 style=\"" + color_Blue + "\">Thank you for contacting us</h1> <p>Dear Friend,</p> <p><strong>We are pleased to inform you about all the events which we are going to arrange.</strong></p><ol><li style=\"" + list_Bold + "\"></li><li style=\"" + list_Bold + "\">Event Date: 2023 </li><li style=\"" + list_Bold + "\"></li><li style=\"" + list_Bold + "\">Conatct Us : 123487972 </li> <ol><p>Thanks</p><br/></body></html>";
+                    mailMessage.Body = "<htm><body> <h1 style=\"" + color_Blue + "\">Thank you for contacting us</h1> <p>Dear Friend,</p> <p><strong> For inquiries or to planning your perfect event , reach out to us directly at jenilparmar1999@gmail.com.We're here to assist you every step of the way .</strong></p><ol><li style=\"" + list_Bold + "\"></li><li style=\"" + list_Bold + "\">Event Date: 2023 </li><li style=\"" + list_Bold + "\"></li><li style=\"" + list_Bold + "\">Conatct Us : 123487972 </li> <ol><p>Thanks</p><br/></body></html>";
                     mailMessage.To.Add(vm.Email);
 
                     ModelState.Clear();
                     ViewBag.Message = "Thank you for Contacting us ";
+                    try
+                    {
+                        smtpClient.Send(mailMessage);
+                        ViewBag.exception = "Emails Send Successfully !!!";
+                    }
+                    catch (Exception ex)
+                    {
+                        ViewBag.exception = ex.Message;
+                    }
                 }
                 catch (Exception ex)
                 {
